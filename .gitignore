@@ -8,3 +8,5 @@ dist
 out
 coverage
 .env*
+dev-*.log
+tmp-video-frames*/
