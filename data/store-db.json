@@ -1,0 +1,231 @@
+{
+  "categories": [
+    {
+      "id": "cat-demo-2",
+      "name": "Home & Decor",
+      "slug": "home-decor",
+      "description": "Elegant accents that upgrade your living spaces with modern style.",
+      "image": "/images/carousel/slide-2.jpeg",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    },
+    {
+      "id": "cat-demo-3",
+      "name": "Kitchenware",
+      "slug": "kitchenware",
+      "description": "Functional kitchen essentials designed for quality and durability.",
+      "image": "/images/carousel/slide-3.jpeg",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prd-demo-1",
+      "slug": "regal-steel-tumbler-900ml",
+      "name": "Regal Steel Tumbler 900ml",
+      "sku": "NN-LX-DR-001",
+      "brand": "NexaNest Luxe",
+      "price": 3299,
+      "compareAtPrice": 3999,
+      "rating": 4.8,
+      "reviewCount": 124,
+      "stock": 38,
+      "shortDescription": "Insulated tumbler with all-day temperature hold.",
+      "description": "A statement steel tumbler crafted for both style and performance, keeping drinks cold or hot for long hours.",
+      "shippingInfo": "Ships in 24 hours. Delivery 2-4 working days in major cities.",
+      "tags": [
+        "drinkware",
+        "insulated",
+        "luxe"
+      ],
+      "variants": [
+        "Ruby Red",
+        "Matte Black"
+      ],
+      "features": [
+        "18/8 stainless steel body",
+        "Leak-resistant lid",
+        "Comfort-grip handle",
+        "Fits most car cup holders"
+      ],
+      "badges": [
+        "Best Seller",
+        "Fast Shipping"
+      ],
+      "images": [
+        "/images/carousel/slide-1.jpeg",
+        "/images/carousel/slide-2.jpeg"
+      ],
+      "isPublished": true,
+      "isFeatured": true,
+      "isNewArrival": true,
+      "categoryId": null,
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T03:16:09.977Z"
+    },
+    {
+      "id": "prd-demo-2",
+      "slug": "aurora-aroma-diffuser-set",
+      "name": "Aurora Aroma Diffuser Set",
+      "sku": "NN-LX-HD-002",
+      "brand": "NexaNest Luxe",
+      "price": 4299,
+      "compareAtPrice": 5199,
+      "rating": 4.7,
+      "reviewCount": 87,
+      "stock": 24,
+      "shortDescription": "Premium diffuser set for warm ambience and calm evenings.",
+      "description": "A curated decor diffuser set that blends scent, design, and soft illumination to elevate your room atmosphere.",
+      "shippingInfo": "Ships in 24-48 hours. Protected packaging for fragile decor items.",
+      "tags": [
+        "decor",
+        "aroma",
+        "home"
+      ],
+      "variants": [
+        "Amber Glass",
+        "Smoked Bronze"
+      ],
+      "features": [
+        "Low-noise mist technology",
+        "Ambient warm light mode",
+        "Auto shut-off safety",
+        "Gift-ready packaging"
+      ],
+      "badges": [
+        "Premium Pick"
+      ],
+      "images": [
+        "/images/carousel/slide-2.jpeg",
+        "/images/carousel/slide-3.jpeg"
+      ],
+      "isPublished": true,
+      "isFeatured": true,
+      "isNewArrival": true,
+      "categoryId": "cat-demo-2",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    },
+    {
+      "id": "prd-demo-3",
+      "slug": "chef-precision-oil-bottle-duo",
+      "name": "Chef Precision Oil Bottle Duo",
+      "sku": "NN-LX-KW-003",
+      "brand": "NexaNest Luxe",
+      "price": 1799,
+      "compareAtPrice": 2299,
+      "rating": 4.6,
+      "reviewCount": 59,
+      "stock": 52,
+      "shortDescription": "Elegant oil dispensers with drip-control nozzles.",
+      "description": "A kitchen duo designed for clean pouring and premium countertop appeal, ideal for oils, vinegar, and dressings.",
+      "shippingInfo": "Ships same day for Karachi and Lahore. Nationwide dispatch available.",
+      "tags": [
+        "kitchenware",
+        "bottle",
+        "cooking"
+      ],
+      "variants": [
+        "Gold Cap",
+        "Brushed Steel"
+      ],
+      "features": [
+        "No-drip precision spout",
+        "Food-grade glass body",
+        "Easy refill neck",
+        "Anti-slip base ring"
+      ],
+      "badges": [
+        "Kitchen Essential"
+      ],
+      "images": [
+        "/images/carousel/slide-3.jpeg",
+        "/images/carousel/slide-1.jpeg"
+      ],
+      "isPublished": true,
+      "isFeatured": true,
+      "isNewArrival": false,
+      "categoryId": "cat-demo-3",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    }
+  ],
+  "orders": [],
+  "contactMessages": [],
+  "newsletterSubscribers": [],
+  "heroCards": [
+    {
+      "id": "hero-demo-1",
+      "title": "Luxury Drinkware Collection",
+      "subtitle": "Premium bottles and tumblers designed to stand out in every setting.",
+      "ctaLabel": "Shop Drinkware",
+      "ctaHref": "/catalog",
+      "image": "/images/carousel/slide-1.jpeg",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    },
+    {
+      "id": "hero-demo-2",
+      "title": "Refined Home Decor Staples",
+      "subtitle": "Bring warmth and elegance to your room with statement essentials.",
+      "ctaLabel": "Shop Decor",
+      "ctaHref": "/catalog",
+      "image": "/images/carousel/slide-2.jpeg",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    },
+    {
+      "id": "hero-demo-3",
+      "title": "Modern Kitchen Essentials",
+      "subtitle": "High-function kitchen accessories made for daily luxury use.",
+      "ctaLabel": "Shop Kitchenware",
+      "ctaHref": "/catalog",
+      "image": "/images/carousel/slide-3.jpeg",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t1",
+      "name": "Ayesha K.",
+      "city": "Lahore",
+      "quote": "Delivery was quick and the quality matched the photos. The checkout process was smooth.",
+      "createdAt": "2026-02-27T02:29:44.383Z",
+      "updatedAt": "2026-02-27T02:29:44.383Z"
+    },
+    {
+      "id": "t2",
+      "name": "Usman R.",
+      "city": "Karachi",
+      "quote": "Support team responded on WhatsApp in minutes and helped me track my parcel.",
+      "createdAt": "2026-02-27T02:29:44.383Z",
+      "updatedAt": "2026-02-27T02:29:44.383Z"
+    },
+    {
+      "id": "t3",
+      "name": "Maham S.",
+      "city": "Islamabad",
+      "quote": "Great pricing and clear product details. I reordered after my first purchase.",
+      "createdAt": "2026-02-27T02:29:44.383Z",
+      "updatedAt": "2026-02-27T02:29:44.383Z"
+    },
+    {
+      "id": "t4",
+      "name": "Saad R.",
+      "city": "Karachi",
+      "quote": "The product finish feels premium and the packaging looked gift-ready right out of the box.",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    },
+    {
+      "id": "t5",
+      "name": "Hina M.",
+      "city": "Islamabad",
+      "quote": "I ordered twice in one month. Quality stayed consistent and delivery was always on time.",
+      "createdAt": "2026-02-27T07:10:00.000Z",
+      "updatedAt": "2026-02-27T07:10:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72" role="img" aria-label="NexaNest">
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5c07a" />
+      <stop offset="100%" stop-color="#ea7f3b" />
+    </linearGradient>
+  </defs>
+  <rect width="360" height="72" rx="12" fill="#131313" />
+  <path d="M28 22h20c10 0 18 8 18 18s-8 18-18 18H28V22zm20 27c5 0 9-4 9-9s-4-9-9-9h-11v18h11z" fill="url(#brandGradient)" />
+  <text x="88" y="45" font-size="28" font-family="Verdana, Arial, sans-serif" fill="#f8f3ec" letter-spacing="1">
+    NEXANEST
+  </text>
+</svg>
+
