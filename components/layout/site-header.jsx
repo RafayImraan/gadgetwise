@@ -60,10 +60,6 @@ export default function SiteHeader() {
 
   return (
     <header className="site-header-wrap">
-      <p className="announcement-bar">
-        Launch Offer: Free shipping over Rs. 5,000 and same-day dispatch in major cities.
-      </p>
-
       <div className="utility-bar">
         <div className="utility-left">
           <a href={siteConfig.socialLinks.instagram} target="_blank" rel="noreferrer">
