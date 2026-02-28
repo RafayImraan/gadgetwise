@@ -1,4 +1,4 @@
-import { getAdminAuditLogs } from "@/lib/storefront-db";
+﻿import { getAdminAuditLogs } from "@/lib/storefront-db";
 import { requireAdminAuth } from "@/lib/admin-auth";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminAuditPage() {
-  requireAdminAuth();
+  await requireAdminAuth();
   const logs = await getAdminAuditLogs(200);
 
   return (
@@ -31,3 +31,4 @@ export default async function AdminAuditPage() {
     </section>
   );
 }
+

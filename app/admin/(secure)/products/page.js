@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+﻿import { revalidatePath } from "next/cache";
 import {
   createAdminAuditLog,
   createProduct,
@@ -21,7 +21,7 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminProductsPage() {
-  requireAdminAuth();
+  await requireAdminAuth();
 
   const [categories, products] = await Promise.all([
     getAdminCategories(),
@@ -32,7 +32,7 @@ export default async function AdminProductsPage() {
 
   async function createProductAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const name = String(formData.get("name") || "").trim();
     const slugInput = String(formData.get("slug") || "").trim();
     const sku = String(formData.get("sku") || "").trim();
@@ -100,7 +100,7 @@ export default async function AdminProductsPage() {
 
   async function updateProductAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const productId = String(formData.get("productId") || "").trim();
     const name = String(formData.get("name") || "").trim();
     const slugInput = String(formData.get("slug") || "").trim();
@@ -170,7 +170,7 @@ export default async function AdminProductsPage() {
 
   async function deleteProductAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const productId = String(formData.get("productId") || "");
     if (!productId) {
       return;
@@ -191,7 +191,7 @@ export default async function AdminProductsPage() {
 
   async function togglePublishedAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const productId = String(formData.get("productId") || "");
     if (!productId) {
       return;
@@ -515,5 +515,6 @@ export default async function AdminProductsPage() {
     </section>
   );
 }
+
 
 

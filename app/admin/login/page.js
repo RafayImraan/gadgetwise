@@ -11,14 +11,14 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default function AdminLoginPage({ searchParams }) {
-  if (isAdminAuthenticated()) {
+export default async function AdminLoginPage({ searchParams }) {
+  if (await isAdminAuthenticated()) {
     redirect("/admin");
   }
 
   async function loginAction(formData) {
     "use server";
-    const ip = getIpFromHeaders(headers());
+    const ip = getIpFromHeaders(await headers());
     const limiter = checkRateLimit({
       key: `admin-login:${ip}`,
       limit: 8,
@@ -40,7 +40,7 @@ export default function AdminLoginPage({ searchParams }) {
       redirect("/admin/login?error=1");
     }
 
-    createAdminSessionCookie();
+    await createAdminSessionCookie();
     await createAdminAuditLog({
       actor: "admin",
       action: "admin_login_success",

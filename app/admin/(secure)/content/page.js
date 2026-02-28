@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+﻿import { revalidatePath } from "next/cache";
 import {
   createAdminAuditLog,
   createHeroCard,
@@ -21,13 +21,13 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminContentPage() {
-  requireAdminAuth();
+  await requireAdminAuth();
 
   const [heroCards, testimonials] = await Promise.all([getHeroCards(), getTestimonials()]);
 
   async function createHeroCardAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const imageUrl = String(formData.get("image") || "").trim();
     const imageFile = formData.get("imageFile");
     const uploaded = await saveUploadedImage(imageFile, "hero");
@@ -52,7 +52,7 @@ export default async function AdminContentPage() {
 
   async function updateHeroCardAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const cardId = String(formData.get("cardId") || "").trim();
     const currentImage = String(formData.get("currentImage") || "").trim();
     const imageUrl = String(formData.get("image") || "").trim();
@@ -83,7 +83,7 @@ export default async function AdminContentPage() {
 
   async function deleteHeroCardAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
 
     const cardId = String(formData.get("cardId") || "").trim();
     if (!cardId) {
@@ -103,7 +103,7 @@ export default async function AdminContentPage() {
 
   async function createTestimonialAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
 
     await createTestimonial({
       name: String(formData.get("name") || "").trim(),
@@ -123,7 +123,7 @@ export default async function AdminContentPage() {
 
   async function updateTestimonialAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const testimonialId = String(formData.get("testimonialId") || "").trim();
     if (!testimonialId) {
       return;
@@ -147,7 +147,7 @@ export default async function AdminContentPage() {
 
   async function deleteTestimonialAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
 
     const testimonialId = String(formData.get("testimonialId") || "").trim();
     if (!testimonialId) {
@@ -333,3 +333,4 @@ export default async function AdminContentPage() {
     </section>
   );
 }
+

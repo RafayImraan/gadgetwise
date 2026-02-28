@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { revalidatePath } from "next/cache";
 import { requireAdminAuth } from "@/lib/admin-auth";
 import { createAdminAuditLog, getDashboardCounts, seedDemoStoreContent } from "@/lib/storefront-db";
@@ -12,14 +12,14 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  requireAdminAuth();
+  await requireAdminAuth();
 
   const counts = await getDashboardCounts();
   const paymentReadiness = getPaymentReadiness();
 
   async function seedDemoContentAction() {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const result = await seedDemoStoreContent();
     await createAdminAuditLog({
       actor: "admin",
@@ -97,3 +97,4 @@ export default async function AdminDashboardPage() {
     </section>
   );
 }
+

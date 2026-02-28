@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+﻿import { revalidatePath } from "next/cache";
 import {
   createAdminAuditLog,
   getAdminOrders,
@@ -25,13 +25,13 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminOrdersPage() {
-  requireAdminAuth();
+  await requireAdminAuth();
 
   const orders = await getAdminOrders();
 
   async function updateStatusAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const orderId = String(formData.get("orderId") || "");
     const status = String(formData.get("status") || "");
     const trackingCode = String(formData.get("trackingCode") || "").trim();
@@ -58,7 +58,7 @@ export default async function AdminOrdersPage() {
 
   async function updatePaymentAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const orderId = String(formData.get("orderId") || "").trim();
     const paymentStatus = String(formData.get("paymentStatus") || "").trim();
     const paymentReference = String(formData.get("paymentReference") || "").trim();
@@ -169,5 +169,6 @@ export default async function AdminOrdersPage() {
     </section>
   );
 }
+
 
 

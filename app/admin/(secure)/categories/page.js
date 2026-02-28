@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+﻿import { revalidatePath } from "next/cache";
 import {
   createAdminAuditLog,
   createCategory,
@@ -17,13 +17,13 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminCategoriesPage() {
-  requireAdminAuth();
+  await requireAdminAuth();
 
   const categories = await getAdminCategories();
 
   async function createCategoryAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const name = String(formData.get("name") || "").trim();
     const description = String(formData.get("description") || "").trim();
     const imageUrl = String(formData.get("image") || "").trim();
@@ -54,7 +54,7 @@ export default async function AdminCategoriesPage() {
 
   async function updateCategoryAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const categoryId = String(formData.get("categoryId") || "").trim();
     const name = String(formData.get("name") || "").trim();
     const description = String(formData.get("description") || "").trim();
@@ -88,7 +88,7 @@ export default async function AdminCategoriesPage() {
 
   async function deleteCategoryAction(formData) {
     "use server";
-    requireAdminAuth();
+    await requireAdminAuth();
     const categoryId = String(formData.get("categoryId") || "");
     if (!categoryId) {
       return;
@@ -185,5 +185,6 @@ export default async function AdminCategoriesPage() {
     </section>
   );
 }
+
 
 

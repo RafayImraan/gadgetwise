@@ -1,12 +1,12 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { redirect } from "next/navigation";
 import { clearAdminSessionCookie, requireAdminAuth } from "@/lib/admin-auth";
 import { createAdminAuditLog } from "@/lib/storefront-db";
 
 export const dynamic = "force-dynamic";
 
-export default function AdminSecureLayout({ children }) {
-  requireAdminAuth();
+export default async function AdminSecureLayout({ children }) {
+  await requireAdminAuth();
 
   async function logoutAction() {
     "use server";
@@ -15,7 +15,7 @@ export default function AdminSecureLayout({ children }) {
       action: "admin_logout",
       scope: "auth"
     });
-    clearAdminSessionCookie();
+    await clearAdminSessionCookie();
     redirect("/admin/login");
   }
 
@@ -44,3 +44,4 @@ export default function AdminSecureLayout({ children }) {
     </main>
   );
 }
+
