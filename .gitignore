@@ -10,3 +10,6 @@ coverage
 .env*
 dev-*.log
 tmp-video-frames*/
+
+.vercel
+.env*.local

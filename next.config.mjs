@@ -1,3 +1,9 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const remoteImageHosts = (process.env.NEXT_PUBLIC_IMAGE_HOSTS ||
   "cdn.shopify.com,images.unsplash.com")
@@ -8,6 +14,9 @@ const remoteImageHosts = (process.env.NEXT_PUBLIC_IMAGE_HOSTS ||
 const nextConfig = {
   poweredByHeader: false,
   compress: true,
+  turbopack: {
+    root: __dirname
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
