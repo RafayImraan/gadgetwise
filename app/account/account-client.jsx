@@ -6,7 +6,6 @@ import ProductCard from "@/components/product/product-card";
 import { useCart } from "@/components/cart/cart-provider";
 
 const tabs = [
-  { key: "auth", label: "Login / Register" },
   { key: "orders", label: "Order History" },
   { key: "addresses", label: "Saved Addresses" },
   { key: "wishlist", label: "Wishlist" },
@@ -14,7 +13,8 @@ const tabs = [
 ];
 
 export default function AccountClient({ catalogProducts = [], recentOrders = [] }) {
-  const [activeTab, setActiveTab] = useState("auth");
+  const [activeTab, setActiveTab] = useState("orders");
+  const [authMode, setAuthMode] = useState("login");
   const { wishlist } = useCart();
   const [customer, setCustomer] = useState(null);
   const [orders, setOrders] = useState(recentOrders);
@@ -34,7 +34,6 @@ export default function AccountClient({ catalogProducts = [], recentOrders = [] 
       setCustomer(null);
       setAddresses([]);
       setOrders([]);
-      setActiveTab("auth");
       return;
     }
     const meData = await meRes.json();
@@ -116,6 +115,7 @@ export default function AccountClient({ catalogProducts = [], recentOrders = [] 
     const ok = await submitJson("/api/account/logout", {}, "Logged out.");
     if (ok) {
       await refreshAccount();
+      setAuthMode("login");
     }
   };
 
@@ -189,40 +189,38 @@ export default function AccountClient({ catalogProducts = [], recentOrders = [] 
     <main className="section-block">
       <div className="section-heading">
         <p className="eyebrow">Account Dashboard</p>
-        <h1>Manage Your Orders and Profile</h1>
-        {customer ? <p>Signed in as {customer.fullName}</p> : <p>Please sign in to access your account.</p>}
+        <h1>{customer ? `Welcome, ${customer.fullName}` : "Manage Your Orders and Profile"}</h1>
+        {customer ? (
+          <p>Signed in as {customer.fullName}</p>
+        ) : (
+          <p>Please sign in to access your account.</p>
+        )}
         {error ? <p className="form-error">{error}</p> : null}
         {info ? <p className="form-success">{info}</p> : null}
       </div>
 
-      <div className="account-layout">
-        <aside className="account-tabs">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              type="button"
-              className={activeTab === tab.key ? "active" : ""}
-              onClick={() => setActiveTab(tab.key)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </aside>
-
+      {!customer ? (
         <section className="account-panel">
-          {!customer && activeTab !== "auth" ? (
-            <div className="panel-card">
-              <h2>Sign in required</h2>
-              <p>Please login or register first to access this section.</p>
-              <button type="button" className="btn" onClick={() => setActiveTab("auth")}>
-                Go to Login
+          <div className="panel-card">
+            <div className="inline-actions">
+              <button
+                type="button"
+                className={`btn ${authMode === "login" ? "" : "secondary"}`}
+                onClick={() => setAuthMode("login")}
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                className={`btn ${authMode === "register" ? "" : "secondary"}`}
+                onClick={() => setAuthMode("register")}
+              >
+                Register
               </button>
             </div>
-          ) : null}
 
-          {activeTab === "auth" ? (
-            <div className="two-col-grid">
-              <form className="panel-card" onSubmit={onLogin}>
+            {authMode === "login" ? (
+              <form onSubmit={onLogin}>
                 <h2>Login</h2>
                 <label>
                   Email
@@ -236,8 +234,8 @@ export default function AccountClient({ catalogProducts = [], recentOrders = [] 
                   Login
                 </button>
               </form>
-
-              <form className="panel-card" onSubmit={onRegister}>
+            ) : (
+              <form onSubmit={onRegister}>
                 <h2>Create Account</h2>
                 <label>
                   Full Name
@@ -259,8 +257,25 @@ export default function AccountClient({ catalogProducts = [], recentOrders = [] 
                   Register
                 </button>
               </form>
-            </div>
-          ) : null}
+            )}
+          </div>
+        </section>
+      ) : (
+        <div className="account-layout">
+          <aside className="account-tabs">
+            {tabs.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                className={activeTab === tab.key ? "active" : ""}
+                onClick={() => setActiveTab(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </aside>
+
+          <section className="account-panel">
 
           {customer && activeTab === "orders" ? (
             <div className="panel-card">
@@ -387,8 +402,9 @@ export default function AccountClient({ catalogProducts = [], recentOrders = [] 
               </form>
             </div>
           ) : null}
-        </section>
-      </div>
+          </section>
+        </div>
+      )}
     </main>
   );
 }

@@ -2,19 +2,51 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { useCart } from "@/components/cart/cart-provider";
 import { navLinks } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
 
 export default function SiteHeader() {
   const router = useRouter();
+  const pathname = usePathname();
   const { cartCount } = useCart();
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [accountLabel, setAccountLabel] = useState("Account");
 
   const nav = useMemo(() => navLinks, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    const loadAccountLabel = async () => {
+      try {
+        const res = await fetch("/api/account/me", { cache: "no-store" });
+        if (!res.ok) {
+          if (isMounted) {
+            setAccountLabel("Account");
+          }
+          return;
+        }
+        const data = await res.json();
+        const name = String(data?.customer?.fullName || "").trim();
+        if (!isMounted) {
+          return;
+        }
+        setAccountLabel(name ? name.split(" ")[0] : "Account");
+      } catch (error) {
+        if (isMounted) {
+          setAccountLabel("Account");
+        }
+      }
+    };
+    loadAccountLabel();
+    return () => {
+      isMounted = false;
+    };
+  }, [pathname]);
+
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     const trimmed = query.trim();
@@ -94,7 +126,7 @@ export default function SiteHeader() {
             {siteConfig.contact.phone}
           </a>
           <Link className="account-link" href="/account">
-            Account
+            {accountLabel}
           </Link>
           <Link href="/cart" className="cart-pill">
             Cart <span>{cartCount}</span>
